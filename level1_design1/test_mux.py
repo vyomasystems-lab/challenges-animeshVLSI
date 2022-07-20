@@ -8,4 +8,3 @@ async def test_mux(dut):
     """Test for mux2"""
 
     cocotb.log.info('##### CTB: Develop your test here ########')
-print("animesh")
