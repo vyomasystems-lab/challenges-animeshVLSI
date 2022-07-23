@@ -28,7 +28,7 @@ async def test_directed_mux(dut):
 async def test_randomised_mux(dut):
     """Test for 2 random numbers multiple times for inp12 and inp13 under select line 13"""
 
-    for i in range(4):
+    for i in range(10):
         A = 13
         B = random.randint(0, 3)
         C = random.randint(0, 3)
