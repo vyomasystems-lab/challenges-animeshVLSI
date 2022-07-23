@@ -32,6 +32,7 @@ async def test_randomised_mux(dut):
         A = 13
         B = random.randint(0, 3)
         C = random.randint(0, 3)
+        
         dut.sel.value = A
         dut.inp12.value = B
         dut.inp13.value = C
