@@ -18,8 +18,8 @@ The assert statement is used for comparing the multiplexer's output to the expec
 
 The following error is seen:
 ```
-assert dut.sum.value == A+B, "Adder result is incorrect: {A} + {B} != {SUM}, expected value={EXP}".format(
-                     AssertionError: Adder result is incorrect: 7 + 5 != 2, expected value=12
+assert dut.out.value == B, "MUX result is incorrect: {B} != {OUT}, expected value={EXP}".format(
+            A=int(dut.sel.value), B=int(dut.inp12.value), OUT=int(dut.out.value), EXP=B)
 ```
 ## Test Scenario **(Important)**
 - Test Inputs: a=7 b=5
