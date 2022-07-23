@@ -39,6 +39,6 @@ async def test_randomised_mux(dut):
 
         await Timer(2, units='ns')
         
-        dut._log.info(f'B={B:03} C={C:03} expected_Value = {C:03} Design_Value={int(dut.out.value):03}')
+        dut._log.info(f'B={B:03} C={C:03} expected_Value = {C:03} Design_Value = {int(dut.out.value):03}')
         assert dut.out.value == C, "Randomised test failed with: {C}! = {OUT}".format(
             A=dut.sel.value, B=dut.b.value, OUT=dut.out.value)
