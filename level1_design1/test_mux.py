@@ -10,10 +10,12 @@ async def test_directed_mux(dut):
     """Test for mux2"""
     A = 12
     B =  2
+    C =  3
 
     # input driving
     dut.sel.value = A
     dut.inp12.value = B
+    dut.inp13.value = C
   
     await Timer(2, units='ns')
    #cocotb.log.info('##### CTB: Develop your test here ########')
