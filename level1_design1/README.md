@@ -6,12 +6,12 @@ The verification environment is setup using [Vyoma's UpTickPro](https://vyomasys
 
 ## Verification Environment
 
-The [CoCoTb](https://www.cocotb.org/) based Python test is developed as explained. The test drives inputs to the Design Under Test (multiplexer module here) which takes 5-bit select line (sel) and 31 input lines each having 2-bit and 2-bit output line called out. The inputs are *inp0*, *inp1*, *inp2*, *inp3*, *inp4*, *inp5*, *inp6*, *inp7*, *inp8*, *inp9*, *inp10*, *inp11*, *inp12*, *inp13*, *inp14*, *inp15*, *inp16*, *inp17*, *inp18*, *inp19*, *inp20*, *inp21*, *inp22*, *inp23*, *inp24*, *inp25*, *inp26*, *inp27*, *inp28*, *inp29*, *inp30*
+The [CoCoTb](https://www.cocotb.org/) based Python test is developed as explained. The test drives inputs to the Design Under Test (multiplexer module here) which takes 5-bit select line (*sel*) and 31 input lines each having 2-bit and 2-bit output line called *out*. The inputs are *inp0*, *inp1*, *inp2*, *inp3*, *inp4*, *inp5*, *inp6*, *inp7*, *inp8*, *inp9*, *inp10*, *inp11*, *inp12*, *inp13*, *inp14*, *inp15*, *inp16*, *inp17*, *inp18*, *inp19*, *inp20*, *inp21*, *inp22*, *inp23*, *inp24*, *inp25*, *inp26*, *inp27*, *inp28*, *inp29*, *inp30*
 
 The values are assigned to the input port using 
 ```
-dut.a.value = 7
-dut.b.value = 5
+dut.sel.value = 12
+dut.inp12.value = 2
 ```
 
 The assert statement is used for comparing the adder's outut to the expected value.
