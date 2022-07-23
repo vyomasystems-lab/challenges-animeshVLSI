@@ -36,8 +36,8 @@ The assert statement is used for comparing the multiplexer's output to the expec
 
 The following error is seen:
 ```
-assert dut.out.value == B, "MUX result is incorrect: {B} != {OUT}, expected value={EXP}".format(
-            A=int(dut.sel.value), B=int(dut.inp12.value), OUT=int(dut.out.value), EXP=B)
+assert dut.out.value == C, "MUX result is incorrect: {C} != {OUT}, expected_value={EXP}".format(
+            A=int(dut.sel.value), B=int(dut.inp12.value), C=int(dut.inp13.value) , OUT=int(dut.out.value), EXP=C)
 ```
 ## Test Scenario **(Important)**
 - Test Inputs: a=7 b=5
