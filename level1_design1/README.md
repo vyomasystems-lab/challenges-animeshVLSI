@@ -102,10 +102,10 @@ For the mux design, for out=inp12 the sel should be 5'b01100 instead of 5'b01101
 ## Design Fix
 Updating the design and re-running the test makes the test pass.
 
-![](https://i.imgur.com/5XbL1ZH.png)
+![Pass](https://user-images.githubusercontent.com/109648435/180621188-8eb46c3a-bfe5-492a-81ac-1b0f818bd1e7.png)
 
-The updated design is checked in as adder_fix.v
 
 ## Verification Strategy
+Both directed and Random test cases has used to verify the design.
+For random test case, random keyword is used in python platform.
 
-## Is the verification complete ?
