@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Jul 23 19:17:56 2022
+# Make data base, printed on Sat Jul 23 19:28:06 2022
 
 # Variables
 
@@ -103,7 +103,7 @@ ELECTRON_RUN_AS_NODE = 1
 # environment
 PYENV_ROOT = /home/gitpod/.pyenv
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-021a9ba6-909d-4c62-a9df-58f51dc888f2.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-fe9356a4-b61a-465f-a699-df86321c268a.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -220,6 +220,7 @@ MFLAGS = -pqrR
 *D = $(patsubst %/,%,$(dir $*))
 # environment
 NVM_DIR = /home/gitpod/.nvm
+ 
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # environment
@@ -353,6 +354,6 @@ GNUmakefile:
 # strcache performance: lookups = 24 / hit rate = 12%
 # hash-table stats:
 # Load=21/8192=0%, Rehash=0, Collisions=1/24=4%
-# Finished Make data base on Sat Jul 23 19:17:56 2022
+# Finished Make data base on Sat Jul 23 19:28:06 2022
 
  
