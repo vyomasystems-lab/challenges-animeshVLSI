@@ -23,7 +23,7 @@ async def test_directed_mux(dut):
     assert dut.out.value == C, "MUX result is incorrect: {C} != {OUT}, expected_value={EXP}".format(
             A=int(dut.sel.value), B=int(dut.inp12.value), C=int(dut.inp13.value) , OUT=int(dut.out.value), EXP=C)
 
-await Timer(2, units='ns')
+
 @cocotb.test()
 async def test_randomised_mux(dut):
     """Test for 2 random numbers multiple times for inp12 and inp13 under select line 13"""
@@ -41,5 +41,6 @@ async def test_randomised_mux(dut):
         await Timer(2, units='ns')
         
         dut._log.info(f'B={B:01} C={C:01} expected_Value = {C:01} Design_Value = {int(dut.out.value):01}')
+        await Timer(2, units='ns')
         assert dut.out.value == C, "Randomised test failed with: {C}! = {OUT}".format(
             A=dut.sel.value, B=dut.b.value, OUT=dut.out.value)
