@@ -28,7 +28,7 @@ async def test_directed_mux(dut):
 async def test_randomised_mux(dut):
     """Test for 2 random numbers multiple times for inp12 and inp13 under select line 13"""
 
-    for i in range(5):
+    for i in range(3):
         A = 13
         B = random.randint(0, 3)
         C = random.randint(0, 3)
@@ -39,7 +39,7 @@ async def test_randomised_mux(dut):
 
         await Timer(2, units='ns')
         
-        dut._log.info(f'B={B:05} C={C:05}') 
+        dut._log.info(f'B={B:03} C={C:03}') 
         #model={A+B:05} DUT={int(dut.out.value):05}')
         assert dut.out.value == C, "Randomised test failed with: {C}! = {OUT}".format(
             A=dut.sel.value, B=dut.b.value, OUT=dut.out.value)
