@@ -25,7 +25,7 @@ async def test_directed_mux(dut):
 async def test_randomised_mux(dut):
     """Test for adding 2 random numbers multiple times"""
 
-    for i in range(5):
+    for i in range(30):
 
         A = random.randint(0, 31)
         B = random.randint(0, 3)
