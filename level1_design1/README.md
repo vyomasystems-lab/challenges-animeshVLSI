@@ -40,9 +40,17 @@ assert dut.out.value == C, "MUX result is incorrect: {C} != {OUT}, expected_valu
             A=int(dut.sel.value), B=int(dut.inp12.value), C=int(dut.inp13.value) , OUT=int(dut.out.value), EXP=C)
 ```
 ## Test Scenario **(Important)**
-- Test Inputs: a=7 b=5
-- Expected Output: sum=12
-- Observed Output in the DUT dut.sum=2
+###### Directed Test 
+- Test Inputs: sel=13, inp12=2, inp13=3
+- Expected Output: out=3
+- Observed Output in the DUT dut.out=2
+
+Output mismatches for the above inputs proving that there is a design bug
+
+###### Random Test
+- Test Inputs: sel=13, inp12=1, inp13=2
+- Expected Output: out=2
+- Observed Output in the DUT dut.out=1
 
 Output mismatches for the above inputs proving that there is a design bug
 
