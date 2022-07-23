@@ -14,7 +14,7 @@ dut.sel.value = 12
 dut.inp12.value = 2
 ```
 
-The assert statement is used for comparing the adder's outut to the expected value.
+The assert statement is used for comparing the multiplexer's output to the expected value.
 
 The following error is seen:
 ```
