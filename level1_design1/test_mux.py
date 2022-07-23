@@ -16,8 +16,7 @@ async def test_directed_mux(dut):
     dut.inp12.value = B
   
     await Timer(2, units='ns')
-    #assert dut.out.value == dut.inp12.value, f"Adder result is incorrect: {dut.out.value} != dut.inp12.value"
-   # cocotb.log.info('##### CTB: Develop your test here ########')
+   cocotb.log.info('##### CTB: Develop your test here ########')
     assert dut.out.value == B, "MUX result is incorrect: {B} != {OUT}, expected value={EXP}".format(
             A=int(dut.sel.value), B=int(dut.inp12.value), OUT=int(dut.out.value), EXP=B)
 
