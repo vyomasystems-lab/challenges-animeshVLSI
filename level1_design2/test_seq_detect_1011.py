@@ -24,3 +24,18 @@ async def test_seq_bug1(dut):
     await FallingEdge(dut.clk)
 
     cocotb.log.info('#### CTB: Develop your test here! ######')
+
+@cocotb.test()
+async def test_randomised_mux(dut):
+    """Test for 2 random numbers multiple times for inp12 and inp13 under select line 13"""
+
+    for i in range(1):
+
+        A = random.randint(0, 1)
+        dut.inp_bit.value = A
+        
+        await Timer(2, units='ns')
+        
+        dut._log.info(f'A={A:01} expected_Value = {C:01} Design_Value = {int(dut.seq_seen.value):01}')
+        assert dut.seq_seen.value == C, "Randomised test failed with: {C}! = {OUT}".format(
+            A=dut.inp_bit.value, OUT=dut.out.value)
