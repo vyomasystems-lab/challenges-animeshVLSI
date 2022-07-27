@@ -38,7 +38,7 @@ async def test_seq_bug1(dut):
     dut.inp_bit.value = 0
     await RisingEdge(dut.clk)
         
-print("How many times will we gets 1 at output")
+    print("How many times will we gets 1 at output")
     Design_Value=dut.seq_seen.value
     print(Design_Value.binstr)
         
