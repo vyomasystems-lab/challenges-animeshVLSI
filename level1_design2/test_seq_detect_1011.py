@@ -40,7 +40,7 @@ async def test_randomised_mux(dut):
         dut.inp_bit.value = 0
         
         await Timer(2, units='ns')
-        OUT=dut.seq_seen.vale
+        OUT=dut.seq_seen.value
         print(OUT.binstr)
         
         #dut._log.info(f'A={A:01} expected_Value = {C:01} Design_Value = {int(dut.seq_seen.value):01}')
