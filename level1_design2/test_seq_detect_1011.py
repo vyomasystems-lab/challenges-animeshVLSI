@@ -24,7 +24,7 @@ async def test_seq_bug1(dut):
     await FallingEdge(dut.clk)
 
     cocotb.log.info('#### CTB: Develop your test here! ######')
-
+    print("****Corresponding output for each input****")
     dut.inp_bit.value = 0
     await RisingEdge(dut.clk)
     print(dut.seq_seen.value)
