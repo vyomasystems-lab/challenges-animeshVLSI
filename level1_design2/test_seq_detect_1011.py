@@ -48,8 +48,8 @@ async def test_seq_bug1(dut):
         
     await Timer(2, units='ns')
     OUT=dut.seq_seen.value
-    print(OUT.binstr)
+    print(OUT.n_bins)
         
         #dut._log.info(f'A={A:01} expected_Value = {C:01} Design_Value = {int(dut.seq_seen.value):01}')
-       # assert dut.seq_seen.value == C, "Randomised test failed with: {C}! = {OUT}".format(
-            #A=dut.inp_bit.value, OUT=dut.out.value)
+    assert dut.seq_seen.value == OUT, "Randomised test failed with: {OUT}! = {1}".format(
+        OUT=dut.seq_seen.value)
