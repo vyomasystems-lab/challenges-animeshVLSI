@@ -25,14 +25,6 @@ async def test_seq_bug1(dut):
 
     cocotb.log.info('#### CTB: Develop your test here! ######')
 
-#@cocotb.test()
-#async def test_randomised_mux(dut):
-    """Test for 2 random numbers multiple times for inp12 and inp13 under select line 13"""
-
-    #for i in range(1):
-
-        #A = random.randint(0, 1)
-
     dut.inp_bit.value = 0
     await FallingEdge(dut.clk)
     dut.inp_bit.value = 1
@@ -46,10 +38,10 @@ async def test_seq_bug1(dut):
     dut.inp_bit.value = 0
     await FallingEdge(dut.clk)
         
-    #await Timer(2, units='ns')
-    OUT=dut.seq_seen.value
-    print(OUT.n_bits)
+# 
+    expected_out=dut.seq_seen.value
+    print(expected_out.n_bits)
         
         #dut._log.info(f'A={A:01} expected_Value = {C:01} Design_Value = {int(dut.seq_seen.value):01}')
-    assert dut.seq_seen.value == OUT, "test is failed with: {OUT}! = {1}".format(
+    assert dut.seq_seen.value == 1, "test is failed with: {expected_out}! = {1}".format(
         OUT=dut.seq_seen.value)
