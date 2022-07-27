@@ -39,8 +39,8 @@ async def test_seq_bug1(dut):
     await FallingEdge(dut.clk)
         
 # 
-    expected_out=dut.seq_seen.value
-    print(expected_out.n_bits)
+    Design_Value=dut.seq_seen.value
+    print(Design_Value.n_bits)
         
     dut._log.info(f'expected_Value = {1} Design_Value = {int(dut.seq_seen.value)}')
     assert dut.seq_seen.value == 1, "test is failed with: {expected_Value}! = {1}".format(
