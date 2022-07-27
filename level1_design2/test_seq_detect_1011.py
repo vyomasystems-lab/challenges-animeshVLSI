@@ -28,37 +28,48 @@ async def test_seq_bug1(dut):
     dut.inp_bit.value = 0
     await RisingEdge(dut.clk)
     print(dut.seq_seen.value.binstr)
+    A=dut.seq_seen.value.binstr
     dut.inp_bit.value = 1
     await RisingEdge(dut.clk)
     print(dut.seq_seen.value.binstr)
+    B= A+dut.seq_seen.value.binstr
     dut.inp_bit.value = 0
     await RisingEdge(dut.clk)
     print(dut.seq_seen.value.binstr)
+    C=B+dut.seq_seen.value.binstr
     dut.inp_bit.value = 1
     await RisingEdge(dut.clk)
     print(dut.seq_seen.value.binstr)
+    D=C+dut.seq_seen.value.binstr
     dut.inp_bit.value = 1
     await RisingEdge(dut.clk)
     print(dut.seq_seen.value.binstr)
+    E=D+dut.seq_seen.value.binstr
     dut.inp_bit.value = 0
     await RisingEdge(dut.clk)
     print(dut.seq_seen.value.binstr)
+    F=E+dut.seq_seen.value.binstr
     dut.inp_bit.value = 1
     await RisingEdge(dut.clk)
     print(dut.seq_seen.value.binstr)
+    G=F+dut.seq_seen.value.binstr
     dut.inp_bit.value = 1
     await RisingEdge(dut.clk)
     print(dut.seq_seen.value.binstr)
+    H=G+dut.seq_seen.value.binstr
     dut.inp_bit.value = 0
     await RisingEdge(dut.clk)
     print(dut.seq_seen.value.binstr)
+    I=H+dut.seq_seen.value.binstr
  
 
         
     print("How many times will we gets 1 at output")
-    out=dut.seq_seen.value
-    print(out.binstr)
+    #out=dut.seq_seen.value
+    #print(out.binstr)
+    print(I)
+
         
-    dut._log.info(f'expected_Value = {1} Design_Value = {out.binstr}')
-    assert dut.seq_seen.value == 1, "test is failed with: {expected_Value}! = {Design_Value}".format(
+    dut._log.info(f'expected_Value = {2} Design_Value = {out.binstr}')
+    assert dut.seq_seen.value == 2, "test is failed with: {expected_Value}! = {Design_Value}".format(
         Design_Value=out.binstr)
