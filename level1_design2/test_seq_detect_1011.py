@@ -37,11 +37,17 @@ async def test_seq_bug1(dut):
     await RisingEdge(dut.clk)
     dut.inp_bit.value = 0
     await RisingEdge(dut.clk)
+    dut.inp_bit.value = 1
+    await RisingEdge(dut.clk)
+    dut.inp_bit.value = 1
+    await RisingEdge(dut.clk)
+    dut.inp_bit.value = 0
+
         
     print("How many times will we gets 1 at output")
     Design_Value=dut.seq_seen.value
     print(Design_Value.binstr)
         
-    dut._log.info(f'expected_Value = {1} Design_Value = {int(dut.seq_seen.value)}')
-    assert dut.seq_seen.value == 1, "test is failed with: {expected_Value}! = {1}".format(
-        OUT=dut.seq_seen.value)
+    dut._log.info(f'expected_Value = {2} Design_Value = {int(dut.seq_seen.value)}')
+    assert dut.seq_seen.value == 2, "test is failed with: {expected_Value}! = {Design_Value}".format(
+        Design_Value=dut.seq_seen.value)
