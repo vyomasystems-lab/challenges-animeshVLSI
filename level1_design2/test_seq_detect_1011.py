@@ -42,6 +42,6 @@ async def test_seq_bug1(dut):
     expected_out=dut.seq_seen.value
     print(expected_out.n_bits)
         
-        #dut._log.info(f'A={A:01} expected_Value = {C:01} Design_Value = {int(dut.seq_seen.value):01}')
+    dut._log.info(f'expected_Value = {1} Design_Value = {int(dut.seq_seen.value)}')
     assert dut.seq_seen.value == 1, "test is failed with: {expected_out}! = {1}".format(
         OUT=dut.seq_seen.value)
