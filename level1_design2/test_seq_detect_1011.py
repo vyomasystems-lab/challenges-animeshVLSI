@@ -24,31 +24,37 @@ async def test_seq_bug1(dut):
     await FallingEdge(dut.clk)
 
     cocotb.log.info('#### CTB: Develop your test here! ######')
-
+    A=0
     dut.inp_bit.value = 0
     await RisingEdge(dut.clk)
     print(dut.seq_seen.value.binstr)
+    A=A+dut.seq_seen.value.binstr
     dut.inp_bit.value = 1
     await RisingEdge(dut.clk)
     print(dut.seq_seen.value.binstr)
+    A=A+dut.seq_seen.value.binstr
     dut.inp_bit.value = 0
     await RisingEdge(dut.clk)
     print(dut.seq_seen.value.binstr)
+    A=A+dut.seq_seen.value.binstr
     dut.inp_bit.value = 1
     await RisingEdge(dut.clk)
     print(dut.seq_seen.value.binstr)
+    A=A+dut.seq_seen.value.binstr
     dut.inp_bit.value = 1
     await RisingEdge(dut.clk)
     print(dut.seq_seen.value.binstr)
+    A=A+dut.seq_seen.value.binstr
     dut.inp_bit.value = 0
     await RisingEdge(dut.clk)
     print(dut.seq_seen.value.binstr)
- 
+    A=A+dut.seq_seen.value.binstr
+    await RisingEdge(dut.clk)
 
         
     print("How many times will we gets 1 at output")
-    out=dut.seq_seen.value
-    print(out.binstr)
+    #out=dut.seq_seen.value
+    print(A)
         
     dut._log.info(f'expected_Value = {1} Design_Value = {out.binstr}')
     assert dut.seq_seen.value == 1, "test is failed with: {expected_Value}! = {Design_Value}".format(
