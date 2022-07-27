@@ -32,16 +32,17 @@ async def test_randomised_mux(dut):
     #for i in range(1):
 
         #A = random.randint(0, 1)
-        dut.inp_bit.value = 0
-        dut.inp_bit.value = 1
-        dut.inp_bit.value = 0
-        dut.inp_bit.value = 1
-        dut.inp_bit.value = 1
-        dut.inp_bit.value = 0
+
+    dut.inp_bit.value = 0
+    dut.inp_bit.value = 1
+    dut.inp_bit.value = 0
+    dut.inp_bit.value = 1
+    dut.inp_bit.value = 1
+    dut.inp_bit.value = 0
         
-        await Timer(2, units='ns')
-        OUT=dut.seq_seen.value
-        print(OUT.binstr)
+    await Timer(2, units='ns')
+    OUT=dut.seq_seen.value
+    print(OUT.binstr)
         
         #dut._log.info(f'A={A:01} expected_Value = {C:01} Design_Value = {int(dut.seq_seen.value):01}')
        # assert dut.seq_seen.value == C, "Randomised test failed with: {C}! = {OUT}".format(
