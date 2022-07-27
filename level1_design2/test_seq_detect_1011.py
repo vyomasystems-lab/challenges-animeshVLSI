@@ -25,8 +25,8 @@ async def test_seq_bug1(dut):
 
     cocotb.log.info('#### CTB: Develop your test here! ######')
 
-@cocotb.test()
-async def test_randomised_mux(dut):
+#@cocotb.test()
+#async def test_randomised_mux(dut):
     """Test for 2 random numbers multiple times for inp12 and inp13 under select line 13"""
 
     #for i in range(1):
