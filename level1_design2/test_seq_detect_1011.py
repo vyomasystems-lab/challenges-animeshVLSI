@@ -45,7 +45,11 @@ async def test_seq_bug1(dut):
     await RisingEdge(dut.clk)
     print(dut.seq_seen.value)
     E=D+dut.seq_seen.value
+
+    assert dut.seq_seen.value == 1, "Test failed with: {A}! = {1}".format(
+            A=dut.sel.value)
     dut.inp_bit.value = 0
+
     await RisingEdge(dut.clk)
     print(dut.seq_seen.value)
     F=E+dut.seq_seen.value
@@ -56,6 +60,10 @@ async def test_seq_bug1(dut):
     dut.inp_bit.value = 1
     await RisingEdge(dut.clk)
     print(dut.seq_seen.value)
+
+    assert dut.seq_seen.value == 1, "Test failed with: {A}! = {1}".format(
+            A=dut.sel.value)
+
     H=G+dut.seq_seen.value
     dut.inp_bit.value = 0
     await RisingEdge(dut.clk)
