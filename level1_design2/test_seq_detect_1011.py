@@ -46,7 +46,7 @@ async def test_seq_bug1(dut):
     dut.inp_bit.value = 0
     await FallingEdge(dut.clk)
         
-    await Timer(2, units='ns')
+    #await Timer(2, units='ns')
     OUT=dut.seq_seen.value
     print(OUT.n_bins)
         
