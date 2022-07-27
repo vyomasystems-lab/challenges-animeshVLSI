@@ -71,5 +71,5 @@ async def test_seq_bug1(dut):
 
         
     dut._log.info(f'expected_Value = {2} Design_Value = {I}')
-    assert dut.seq_seen.value == 1, "test is failed with: {expected_Value} = {Design_Value}".format(
+    assert dut.seq_seen.value == expected_Value, "test is failed with: {expected_Value}! = {Design_Value}".format(
         Design_Value = int(I), expected_Value =2)
