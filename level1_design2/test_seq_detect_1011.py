@@ -41,8 +41,8 @@ async def test_seq_bug1(dut):
         
     print("How many times will we gets 1 at output")
     out=dut.seq_seen.value
-    print(out.n_bits)
+    print(out.binstr)
         
-    dut._log.info(f'expected_Value = {1} Design_Value = {out.n_bits}')
+    dut._log.info(f'expected_Value = {1} Design_Value = {out.binstr}')
     assert dut.seq_seen.value == expected_Value, "test is failed with: {expected_Value}! = {Design_Value}".format(
-        Design_Value=out.n_bits)
+        Design_Value=out.binstr)
