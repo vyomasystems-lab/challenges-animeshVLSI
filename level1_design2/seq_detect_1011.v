@@ -1,9 +1,6 @@
-// See LICENSE.vyoma for more details
-// Verilog module for Sequence detection: 1011
-//BUG LESS DESIGN
 module seq_detect_1011(seq_seen, inp_bit, reset, clk);
 
-  output  seq_seen;
+  output seq_seen;
   input inp_bit;
   input reset;
   input clk;
@@ -47,7 +44,7 @@ module seq_detect_1011(seq_seen, inp_bit, reset, clk);
       SEQ_1:
       begin
         if(inp_bit == 1)
-          next_state = SEQ_1;     //BUG
+          next_state = IDLE;
         else
           next_state = SEQ_10;
       end
@@ -63,14 +60,11 @@ module seq_detect_1011(seq_seen, inp_bit, reset, clk);
         if(inp_bit == 1)
           next_state = SEQ_1011;
         else
-          next_state = SEQ_101;    //BUG
+          next_state = IDLE;
       end
-      SEQ_1011:						// complete case is BUG
+      SEQ_1011:
       begin
-		if (inp_bit == 1)
-		   next_state = SEQ_1;
-		else
-           next_state = SEQ_10;
+        next_state = IDLE;
       end
     endcase
   end
