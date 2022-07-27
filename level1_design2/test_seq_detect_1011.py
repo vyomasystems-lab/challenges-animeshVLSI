@@ -51,5 +51,5 @@ async def test_seq_bug1(dut):
     print(OUT.n_bins)
         
         #dut._log.info(f'A={A:01} expected_Value = {C:01} Design_Value = {int(dut.seq_seen.value):01}')
-    assert dut.seq_seen.value == OUT, "Randomised test failed with: {OUT}! = {1}".format(
+    assert dut.seq_seen.value == OUT, "test is failed with: {OUT}! = {1}".format(
         OUT=dut.seq_seen.value)
