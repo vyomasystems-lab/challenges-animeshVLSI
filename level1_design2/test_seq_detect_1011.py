@@ -34,11 +34,17 @@ async def test_seq_bug1(dut):
         #A = random.randint(0, 1)
 
     dut.inp_bit.value = 0
+    await FallingEdge(dut.clk)
     dut.inp_bit.value = 1
+    await FallingEdge(dut.clk)
     dut.inp_bit.value = 0
+    await FallingEdge(dut.clk)
     dut.inp_bit.value = 1
+    await FallingEdge(dut.clk)
     dut.inp_bit.value = 1
+    await FallingEdge(dut.clk)
     dut.inp_bit.value = 0
+    await FallingEdge(dut.clk)
         
     await Timer(2, units='ns')
     OUT=dut.seq_seen.value
