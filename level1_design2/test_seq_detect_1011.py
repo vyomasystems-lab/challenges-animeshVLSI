@@ -26,17 +26,17 @@ async def test_seq_bug1(dut):
     cocotb.log.info('#### CTB: Develop your test here! ######')
 
     dut.inp_bit.value = 0
-    await FallingEdge(dut.clk)
+    await RisingEdge(dut.clk)
     dut.inp_bit.value = 1
-    await FallingEdge(dut.clk)
+    await RisingEdge(dut.clk)
     dut.inp_bit.value = 0
-    await FallingEdge(dut.clk)
+    await RisingEdge(dut.clk)
     dut.inp_bit.value = 1
-    await FallingEdge(dut.clk)
+    await RisingEdge(dut.clk)
     dut.inp_bit.value = 1
-    await FallingEdge(dut.clk)
+    await RisingEdge(dut.clk)
     dut.inp_bit.value = 0
-    await FallingEdge(dut.clk)
+    await RisingEdge(dut.clk)
         
 # 
     Design_Value=dut.seq_seen.value
