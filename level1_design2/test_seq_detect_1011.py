@@ -36,6 +36,7 @@ async def test_seq_bug1(dut):
     dut.inp_bit.value = 1
     await RisingEdge(dut.clk)
     dut.inp_bit.value = 0
+    await RisingEdge(dut.clk)
  
 
         
