@@ -29,13 +29,20 @@ async def test_seq_bug1(dut):
 async def test_randomised_mux(dut):
     """Test for 2 random numbers multiple times for inp12 and inp13 under select line 13"""
 
-    for i in range(1):
+    #for i in range(1):
 
-        A = random.randint(0, 1)
-        dut.inp_bit.value = A
+        #A = random.randint(0, 1)
+        dut.inp_bit.value = 0
+        dut.inp_bit.value = 1
+        dut.inp_bit.value = 0
+        dut.inp_bit.value = 1
+        dut.inp_bit.value = 1
+        dut.inp_bit.value = 0
         
         await Timer(2, units='ns')
+        OUT=dut.seq_seen.vale
+        print(OUT.binstr)
         
-        dut._log.info(f'A={A:01} expected_Value = {C:01} Design_Value = {int(dut.seq_seen.value):01}')
-        assert dut.seq_seen.value == C, "Randomised test failed with: {C}! = {OUT}".format(
-            A=dut.inp_bit.value, OUT=dut.out.value)
+        #dut._log.info(f'A={A:01} expected_Value = {C:01} Design_Value = {int(dut.seq_seen.value):01}')
+       # assert dut.seq_seen.value == C, "Randomised test failed with: {C}! = {OUT}".format(
+            #A=dut.inp_bit.value, OUT=dut.out.value)
