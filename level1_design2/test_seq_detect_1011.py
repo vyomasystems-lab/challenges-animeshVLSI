@@ -64,7 +64,7 @@ async def test_seq_bug1(dut):
  
 
         
-    print("How many times will we gets 1 at output")
+    print("How many times will we gets 1 at output?")
     #out=dut.seq_seen.value
     #print(out.binstr)
     print(I)
