@@ -48,6 +48,6 @@ async def test_seq_bug1(dut):
     Design_Value=dut.seq_seen.value
     print(Design_Value.binstr)
         
-    dut._log.info(f'expected_Value = {2} Design_Value = {int(dut.seq_seen.value)}')
+    dut._log.info(f'expected_Value = {Design_Value.binstr} Design_Value = {int(dut.seq_seen.value)}')
     assert dut.seq_seen.value == expected_Value, "test is failed with: {expected_Value}! = {Design_Value}".format(
         Design_Value=dut.seq_seen.value)
