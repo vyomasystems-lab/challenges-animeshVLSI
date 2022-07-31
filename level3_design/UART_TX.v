@@ -38,7 +38,7 @@ module UART_TX (clk,baud_rate_select,start,Byte_To_Send,Tx_Active,Tx_Serial,Tx_D
 			begin
 				baud_rate = 11'b01000001001; //19200(521)
 			end
-		  3'b010:
+		  3'b011:
 			begin
 				baud_rate = 11'b00100000101; //38400(261)
 			end
