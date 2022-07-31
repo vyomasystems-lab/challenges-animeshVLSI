@@ -11,7 +11,7 @@ from cocotb.clock import Clock
 from cocotb.triggers import RisingEdge, FallingEdge
 
 @cocotb.test()
-async def test_seq_bug1(dut):
+async def test3(dut):
     """Test for seq detection """
 
     clock = Clock(dut.clk, 10, units="us")  # Create a 10us period clock on port clk
@@ -24,65 +24,29 @@ async def test_seq_bug1(dut):
     await FallingEdge(dut.clk)
 
     cocotb.log.info('#### CTB: Develop your test here! ######')
-    print("****Corresponding output for each input****")
-    dut.inp_bit.value = 0
-    await RisingEdge(dut.clk)
-    print(dut.seq_seen.value)
-    A=dut.seq_seen.value
-    dut.inp_bit.value = 1
-    await RisingEdge(dut.clk)
-    print(dut.seq_seen.value)
-    B= A+dut.seq_seen.value
-    dut.inp_bit.value = 0
-    await RisingEdge(dut.clk)
-    print(dut.seq_seen.value)
-    C=B+dut.seq_seen.value
-    dut.inp_bit.value = 1
-    await RisingEdge(dut.clk)
-    print(dut.seq_seen.value)
-    D=C+dut.seq_seen.value
-    dut.inp_bit.value = 1
-    await RisingEdge(dut.clk)
-    print(dut.seq_seen.value)
-    E=D+dut.seq_seen.value
+    #print("****Corresponding output for each input****")
+    @cocotb.test()
+    async def test3_directed(dut):
+   
+     A = 3
+     B =  140
+     C =  1
 
-    #assert dut.seq_seen.value == 1, "Test failed with: {A}! = {1}".format(
-    #        A=dut.seq_seen.value)
-    dut.inp_bit.value = 0
+    # input driving
+    dut.baud_rate_select.value = A
+    dut.Byte_to_send.value = B
+    dut.start.value = C
+    dut.Tx_Done.value = D
+  
+    await Timer(2, units='ns')
 
-    await RisingEdge(dut.clk)
-    print(dut.seq_seen.value)
-    F=E+dut.seq_seen.value
-    dut.inp_bit.value = 1
-    await RisingEdge(dut.clk)
-    print(dut.seq_seen.value)
-    G=F+dut.seq_seen.value
-    dut.inp_bit.value = 1
-    await RisingEdge(dut.clk)
-    print(dut.seq_seen.value)
-
+    assert dut.Tx_Done.value == 1, "correct baud rate checking failed: {D} != {1}".format(
+            D=int(dut.Tx_Done.value))
     
-
-    H=G+dut.seq_seen.value
-    dut.inp_bit.value = 0
-    await RisingEdge(dut.clk)
-    print(dut.seq_seen.value)
-    assert dut.seq_seen.value == 1, "Test failed with: {A}! = {1}".format(
-            A=dut.seq_seen.value)
-    I=H+dut.seq_seen.value
  
 
         
-    print("How many times will we gets 1 at output?")
-    #out=dut.seq_seen.value
-    #print(out.binstr)
-    print(I)
+   
 
         
-    dut._log.info(f'expected_Value = {2} Design_Value = {I}')
-    expected_Value=2
-    Design_Value=I
-    if expected_Value == Design_Value:
-        print("PASS")
-    else:
-        print("FAIL")
+    
