@@ -4,9 +4,9 @@ TOPLEVEL_LANG ?= verilog
 
 PWD=$(shell pwd)
 
-VERILOG_SOURCES = $(PWD)/UART_RX.v               # provide your design path
+VERILOG_SOURCES = $(PWD)/UART_TX.v               # provide your design path
 
-TOPLEVEL := UART_RX        # design file
+TOPLEVEL := UART_TX        # design file
 MODULE   := test    # test file
 
 include $(shell cocotb-config --makefiles)/Makefile.sim

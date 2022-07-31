@@ -1,45 +1,88 @@
 # See LICENSE.vyoma for details
 
-import cocotb
-from cocotb.triggers import Timer
+# SPDX-License-Identifier: CC0-1.0
+
+import os
 import random
+from pathlib import Path
 
-
-@cocotb.test()
-async def test_directed_mux(dut):
-    """Test for mux2"""
-    A = 13
-    B =  2
-    C =  3
-
-    # input driving
-    dut.sel.value = A
-    dut.inp12.value = B
-    dut.inp13.value = C
-  
-    await Timer(2, units='ns')
-   #cocotb.log.info('##### CTB: Develop your test here ########')
-
-    assert dut.out.value == C, "MUX result is incorrect: {C} != {OUT}, expected_value={EXP}".format(
-            A=int(dut.sel.value), B=int(dut.inp12.value), C=int(dut.inp13.value) , OUT=int(dut.out.value), EXP=C)
-
+import cocotb
+from cocotb.clock import Clock
+from cocotb.triggers import RisingEdge, FallingEdge
 
 @cocotb.test()
-async def test_randomised_mux(dut):
-    """Test for 2 random numbers multiple times for inp12 and inp13 under select line 13"""
+async def test_seq_bug1(dut):
+    """Test for seq detection """
 
-    for i in range(1):
+    clock = Clock(dut.clk, 10, units="us")  # Create a 10us period clock on port clk
+    cocotb.start_soon(clock.start())        # Start the clock
 
-        A = 13
-        B = random.randint(0, 1)
-        C = random.randint(2, 3)
+    # reset
+    dut.reset.value = 1
+    await FallingEdge(dut.clk)  
+    dut.reset.value = 0
+    await FallingEdge(dut.clk)
 
-        dut.sel.value = A
-        dut.inp12.value = B
-        dut.inp13.value = C
+    cocotb.log.info('#### CTB: Develop your test here! ######')
+    print("****Corresponding output for each input****")
+    dut.inp_bit.value = 0
+    await RisingEdge(dut.clk)
+    print(dut.seq_seen.value)
+    A=dut.seq_seen.value
+    dut.inp_bit.value = 1
+    await RisingEdge(dut.clk)
+    print(dut.seq_seen.value)
+    B= A+dut.seq_seen.value
+    dut.inp_bit.value = 0
+    await RisingEdge(dut.clk)
+    print(dut.seq_seen.value)
+    C=B+dut.seq_seen.value
+    dut.inp_bit.value = 1
+    await RisingEdge(dut.clk)
+    print(dut.seq_seen.value)
+    D=C+dut.seq_seen.value
+    dut.inp_bit.value = 1
+    await RisingEdge(dut.clk)
+    print(dut.seq_seen.value)
+    E=D+dut.seq_seen.value
+
+    #assert dut.seq_seen.value == 1, "Test failed with: {A}! = {1}".format(
+    #        A=dut.seq_seen.value)
+    dut.inp_bit.value = 0
+
+    await RisingEdge(dut.clk)
+    print(dut.seq_seen.value)
+    F=E+dut.seq_seen.value
+    dut.inp_bit.value = 1
+    await RisingEdge(dut.clk)
+    print(dut.seq_seen.value)
+    G=F+dut.seq_seen.value
+    dut.inp_bit.value = 1
+    await RisingEdge(dut.clk)
+    print(dut.seq_seen.value)
+
+    
+
+    H=G+dut.seq_seen.value
+    dut.inp_bit.value = 0
+    await RisingEdge(dut.clk)
+    print(dut.seq_seen.value)
+    assert dut.seq_seen.value == 1, "Test failed with: {A}! = {1}".format(
+            A=dut.seq_seen.value)
+    I=H+dut.seq_seen.value
+ 
+
         
-        await Timer(2, units='ns')
+    print("How many times will we gets 1 at output?")
+    #out=dut.seq_seen.value
+    #print(out.binstr)
+    print(I)
+
         
-        dut._log.info(f'B={B:01} C={C:01} expected_Value = {C:01} Design_Value = {int(dut.out.value):01}')
-        assert dut.out.value == C, "Randomised test failed with: {C}! = {OUT}".format(
-            A=dut.sel.value, B=dut.b.value, OUT=dut.out.value)
+    dut._log.info(f'expected_Value = {2} Design_Value = {I}')
+    expected_Value=2
+    Design_Value=I
+    if expected_Value == Design_Value:
+        print("PASS")
+    else:
+        print("FAIL")
