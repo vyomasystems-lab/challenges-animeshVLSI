@@ -1,4 +1,4 @@
-module UART_TX (clk,baud_rate_select,start,Byte_To_Send,Tx_Active,Tx_Serial,Tx_Done,rst);
+module UART_TX (clock,baud_rate_select,start,Byte_To_Send,Tx_Active,Tx_Serial,Tx_Done,reset);
   //#(parameter baud_rate)
    input       clock;
 	input 		reset;
