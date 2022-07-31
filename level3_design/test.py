@@ -38,7 +38,7 @@ async def test3(dut):
     dut.start.value = 1
     #dut.Tx_Done.value = D
   
-    await Timer(2, units='ns')
+    #await Timer(2, units='ns')
 
     assert dut.Tx_Done.value == 1, "correct baud rate checking failed: {D} != {1}".format(
             D=int(dut.Tx_Done.value))
