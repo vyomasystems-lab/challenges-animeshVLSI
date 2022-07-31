@@ -34,7 +34,7 @@ async def test3(dut):
 
     # input driving
     dut.baud_rate_select.value = 3
-    dut.Byte_to_send.value = 140
+    dut.Byte_To_Send.value = 140
     dut.start.value = 1
     dut.Tx_Done.value = D
   
