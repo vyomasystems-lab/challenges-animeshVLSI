@@ -1,7 +1,7 @@
 module UART_TX (clk,baud_rate_select,start,Byte_To_Send,Tx_Active,Tx_Serial,Tx_Done,rst);
   //#(parameter baud_rate)
-   input       clk;
-	input 		rst;
+   input       clock;
+	input 		reset;
 	input [2:0]	baud_rate_select;
    input       start;
    input [7:0] Byte_To_Send; 
@@ -64,9 +64,9 @@ module UART_TX (clk,baud_rate_select,start,Byte_To_Send,Tx_Active,Tx_Serial,Tx_D
 		endcase
     end		 
   
-  always @(posedge clk or posedge rst)
+  always @(posedge clock or posedge reset)
     begin		
-		if (rst)
+		if (reset)
 			begin
 				State     <= IDLE;
 				clk_count <= 11'b00000000000;
