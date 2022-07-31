@@ -44,7 +44,10 @@ async def test3(dut):
             D=int(dut.Tx_Done.value))
     
  
-
+if dut.Tx_Done.value == 1:
+        print("PASS")
+else:
+        print("FAIL")
         
    
 
