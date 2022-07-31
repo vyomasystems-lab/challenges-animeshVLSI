@@ -33,9 +33,9 @@ async def test3(dut):
      C =  1
 
     # input driving
-    dut.baud_rate_select.value = A
-    dut.Byte_to_send.value = B
-    dut.start.value = C
+    dut.baud_rate_select.value = 3
+    dut.Byte_to_send.value = 140
+    dut.start.value = 1
     dut.Tx_Done.value = D
   
     await Timer(2, units='ns')
