@@ -14,14 +14,14 @@ from cocotb.triggers import RisingEdge, FallingEdge
 async def test3(dut):
     """Test for seq detection """
 
-    clock = Clock(dut.clk, 10, units="us")  # Create a 10us period clock on port clk
+    clock = Clock(dut.clock, 10, units="us")  # Create a 10us period clock on port clk
     cocotb.start_soon(clock.start())        # Start the clock
 
     # reset
     dut.reset.value = 1
-    await FallingEdge(dut.clk)  
+    await FallingEdge(dut.clock)  
     dut.reset.value = 0
-    await FallingEdge(dut.clk)
+    await FallingEdge(dut.clock)
 
     cocotb.log.info('#### CTB: Develop your test here! ######')
     #print("****Corresponding output for each input****")
