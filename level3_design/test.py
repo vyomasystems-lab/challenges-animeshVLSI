@@ -36,18 +36,13 @@ async def test3(dut):
     dut.baud_rate_select.value = 3
     dut.Byte_To_Send.value = 140
     dut.start.value = 1
-    #dut.Tx_Done.value = D
+    dut.Tx_Done.value = D
   
     #await Timer(2, units='ns')
 
     assert dut.Tx_Done.value == 1, "correct baud rate checking failed: {D} != {1}".format(
             D=int(dut.Tx_Done.value))
     
- 
-if dut.Tx_Done.value == 1:
-        print("PASS")
-else:
-        print("FAIL")
         
    
 
