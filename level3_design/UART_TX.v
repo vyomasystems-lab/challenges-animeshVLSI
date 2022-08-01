@@ -59,8 +59,8 @@ module UART_TX (clock,baud_rate_select,start,Byte_To_Send,Tx_Active,Tx_Serial,Tx
 			begin
 				baud_rate = 11'b00000100111; //256000(39)
 			end
-		  default:
-				baud_rate = 11'b10000010010; //9600
+		  //default:
+			  //baud_rate = 11'b10000010010; //9600
 		endcase
     end		 
   
