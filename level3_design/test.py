@@ -37,6 +37,7 @@ async def test3(dut):
     dut.Byte_To_Send.value = 140
     dut.start.value = 1
     dut.Tx_Done.value = D
+    dut.Tx_Serial.value = 1
   
     #await Timer(10000000, units='ns')
 
